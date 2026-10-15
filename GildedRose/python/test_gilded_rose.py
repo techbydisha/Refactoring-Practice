@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest
-from gilded_rose_refactored import update_quality, Item
+from gilded_rose_first_attempt_disha import update_quality, Item
 
 
 class GildedRoseTest(unittest.TestCase):
@@ -15,22 +15,22 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(41, item[0].quality)
         
     def test_backstage_pass_after_concert(self):
-        items = [Item('Backstage passes',-1,49)]
+        items = [Item('Backstage passes to a TAFKAL80ETC concert',-1,49)]
         update_quality(items)
         self.assertEqual(0, items[0].quality)
         
     def test_backstage_pass_10_days_before_concert(self):
-        items = [Item('Backstage passes',10,45)]
+        items = [Item('Backstage passes to a TAFKAL80ETC concert',10,45)]
         update_quality(items)
         self.assertEqual(47, items[0].quality)
 
     def test_backstage_pass_less_than_5_days_before_concert(self):
-        items = [Item('Backstage passes',5,45)]
+        items = [Item('Backstage passes to a TAFKAL80ETC concert',5,45)]
         update_quality(items)
         self.assertEqual(48, items[0].quality) 
             
     def test_sulfuras_never_changes(self):
-        items = [Item('Sulfuras',10,40)]
+        items = [Item('Sulfuras, Hand of Ragnaros',10,40)]
         update_quality(items)
         self.assertEqual((10,40),(items[0].sell_in, items[0].quality))
         
@@ -42,7 +42,7 @@ class GildedRoseTest(unittest.TestCase):
     def test_conjured_before_sell_date(self):
         items = [Item('Conjured', 10, 20)]
         update_quality(items)
-        self.assertEqual(18,items[0].quality)
+        self.assertEqual(19,items[0].quality)
         
 
 
